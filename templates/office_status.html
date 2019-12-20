@@ -25,30 +25,24 @@ $.ajax({
     }
 })
 function setChart(){
-    var ctx = document.getElementById("myChart");
-    var ctx2 = document.getElementById("myChart2");
+   // var ctx = document.getElementById("myChart");
+    var ctx2 = document.getElementById("energy-consumption");
+    var ctx3 = document.getElementById("temperature-inside");
+    var ctx4 = document.getElementById("temperature-outside");
     var myChart = new Chart(ctx2, {
-    type: 'bar',
+    type: 'line',
     data: {
         labels: labels,
         datasets: [{
-            label: '# of Votes',
+            label: 'Consumption of Energy',
             data: consumption,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
+
             ],
             borderColor: [
                 'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
+
             ],
             borderWidth: 1
         }]
@@ -57,34 +51,26 @@ function setChart(){
         scales: {
             yAxes: [{
                 ticks: {
-                    beginAtZero:true
+                    beginAtZero:false
                 }
             }]
         }
     }
 });
-    var myChart = new Chart(ctx, {
-    type: 'polarArea',
+    var myChart = new Chart(ctx3, {
+    type: 'line',
     data: {
         labels: labels,
         datasets: [{
-            label: '# of Votes',
-            data: consumption,
+            label: 'Temperature inside',
+            data: temp_in,
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
+                'rgba(0, 255, 153, 0.2)',
+
             ],
             borderColor: [
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
+                'rgba(1,255,155,1)',
+
             ],
             borderWidth: 1
         }]
@@ -93,7 +79,35 @@ function setChart(){
         scales: {
             yAxes: [{
                 ticks: {
-                    beginAtZero:true
+                    beginAtZero:false
+                }
+            }]
+        }
+    }
+});
+var myChart = new Chart(ctx4, {
+    type: 'line',
+    data: {
+        labels: labels,
+        datasets: [{
+            label: 'Temperature outside',
+            data: temp_out,
+            backgroundColor: [
+                'rgba(102, 153, 255, 0.2)',
+
+            ],
+            borderColor: [
+                'rgba(105,153,255,1)',
+
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:false
                 }
             }]
         }
@@ -111,10 +125,13 @@ function setChart(){
         <h1 style="text-align: center; margin-bottom: 50px;">Oszczędzanie Energii w biurze wersja testowa</h1>
         <br/>
         <div class='col-sm-6'>
-            <canvas id="myChart" width="400" height="400"></canvas>
+            <canvas id="energy-consumption" width="400" height="400"></canvas>
         </div>
         <div class='col-sm-6'>
-            <canvas id="myChart2" width="400" height="400"></canvas>
+            <canvas id="temperature-inside" width="400" height="400"></canvas>
+        </div>
+        <div class='col-sm-6' style="margin-top: 50px;">
+            <canvas id="temperature-outside" width="400" height="400"></canvas>
         </div>
 
 
