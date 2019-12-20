@@ -2,19 +2,25 @@
 
 <script>
 {% block jquery %}
-var endpoint = '/api/charts'
-var humidity = []
+var endpoint = '/api/charts';
+var consumption = [];
+var temp_out = [];
+var temp_in = [];
+var aircondition = [];
 var labels = [];
 $.ajax({
     method: "GET",
     url: endpoint,
     success: function(data){
-        labels = data.labels
-        humidity = data.humidity
+        labels = data.labels;
+        consumption = data.consumption;
+        temp_out = data.temp_out;
+        temp_in = data.temp_in;
+        aircondition = data.aircondition;
         setChart()
     },
     error: function(error_data){
-        console.log("error")
+        console.log("error");
         console.log(error_data)
     }
 })
@@ -27,7 +33,7 @@ function setChart(){
         labels: labels,
         datasets: [{
             label: '# of Votes',
-            data: humidity,
+            data: consumption,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -63,7 +69,7 @@ function setChart(){
         labels: labels,
         datasets: [{
             label: '# of Votes',
-            data: humidity,
+            data: consumption,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
