@@ -3,6 +3,7 @@ from django.views.generic import View
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from models.gs_sync import GS_data
+from models.data_sorting import DataSort
 
 class HomeView(View):
     def get(self, request, *args, **kwargs):
@@ -20,12 +21,14 @@ class ChartData(APIView):
         temp_out = self.gs_data.get_out_temp()
         temp_in = self.gs_data.get_ins_temp()
         is_airc_on = self.gs_data.is_airc_on()
+        circle_chart = DataSort()
+        aircon_data = circle_chart.get_circle_chart_data(is_airc_on)
 
         data = {
             "labels":labels,
             "consumption":consumption,
             "temp_out":temp_out,
             "temp_in":temp_in,
-            "aircondition":is_airc_on
+            "aircondition":aircon_data
         }
         return Response(data)
