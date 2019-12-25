@@ -21,6 +21,8 @@ class ChartData(APIView):
         temp_out = self.gs_data.get_out_temp()
         temp_in = self.gs_data.get_ins_temp()
         is_airc_on = self.gs_data.is_airc_on()
+        for i in is_airc_on:
+            print(type(i))
         circle_chart = DataSort()
         aircon_data = circle_chart.get_circle_chart_data(is_airc_on)
 

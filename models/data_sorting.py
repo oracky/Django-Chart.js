@@ -6,9 +6,9 @@ class DataSort:
         yes = 0
         no = 0
         for value in list:
-            if value:
+            if value == "TRUE":
                 yes += 1
-            else:
+            elif value == "FALSE":
                 no += 1
         return yes, no
 

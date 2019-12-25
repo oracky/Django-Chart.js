@@ -138,8 +138,8 @@ var myChart = new Chart(ctx5, {
 					label: 'Last 24 hours'
 				}],
 				labels: [
-					'Open',
-					'Closed'
+					'On',
+					'Off'
 				]
 			},
 			options: {
@@ -149,7 +149,7 @@ var myChart = new Chart(ctx5, {
 				},
 				title: {
 					display: true,
-					text: 'Aircondition open time'
+					text: 'Aircondition usage time'
 				},
 				animation: {
 					animateScale: true,
@@ -165,20 +165,23 @@ var myChart = new Chart(ctx5, {
 
 {% block content %}
 
+<nav class="navbar" style="background-color: cornflowerblue; color: white;">
+    <h1 style="text-align: center; margin-bottom: 50px;">Oszczędzanie Energii w biurze wersja testowa</h1>
+</nav>
 <div class='row'>
     <div class='col-sm-12' url-endpoint='{% url "home" %}'>
-        <h1 style="text-align: center; margin-bottom: 50px;">Oszczędzanie Energii w biurze wersja testowa</h1>
+
         <br/>
-        <div class='col-sm-6'>
+        <div class='col-sm-6' style="border: lightgray; border-style: solid; border-radius: 16px; padding: 20px;">
             <canvas id="energy-consumption" width="400" height="400"></canvas>
         </div>
-        <div class='col-sm-6'>
+        <div class='col-sm-6' style="border: lightgray; border-style: solid; border-radius: 16px; padding: 20px;">
             <canvas id="temperature-inside" width="400" height="400"></canvas>
         </div>
-        <div class='col-sm-6' style="margin-top: 50px;">
+        <div class='col-sm-6' style="margin-top: 50px; margin-bottom: 50px; border: lightgray; border-style: solid; border-radius: 16px; padding: 20px;">
             <canvas id="temperature-outside" width="400" height="400"></canvas>
         </div>
-        <div class='col-sm-6' style="margin-top: 50px;">
+        <div class='col-sm-6' style="margin-top: 50px; margin-bottom: 50px; border: lightgray; border-style: solid; border-radius: 16px; padding: 20px;">
             <canvas id="aircondition" width="400" height="400"></canvas>
         </div>
 
